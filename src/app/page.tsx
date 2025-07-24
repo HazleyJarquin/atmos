@@ -2,6 +2,7 @@ import { getForecastByCity, getWeatherByCity } from "@/actions";
 import { CitySearchForm } from "@/components/CitySearchForm";
 import { ForecastCarousel } from "@/components/ForecastCarousel";
 import { WeatherCard } from "@/components/WeatherCard";
+import { CloudSunIcon } from "lucide-react";
 
 interface Props {
   searchParams: Promise<{
@@ -19,13 +20,10 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <div
-      className={`bg-slate-950 w-full ${
-        forecast && forecast.list && forecast.list.length > 0
-          ? "h-full"
-          : "h-screen"
-      } md:h-screen flex flex-col items-center justify-center p-4 gap-2`}
+      className={`bg-slate-950 w-full min-h-screen flex flex-col items-center p-4 gap-6`}
     >
       <CitySearchForm initialCity={city} />
+
       <WeatherCard
         variant="Current"
         city={currentWeather.name ?? ""}
@@ -37,8 +35,17 @@ export default async function Home({ searchParams }: Props) {
         tempMax={`${currentWeather.main?.temp_max ?? 0} °C`}
         hasError={!!currentWeather.error}
       />
-      {forecast && forecast.list && forecast.list.length > 0 && (
-        <ForecastCarousel forecast={forecast} />
+
+      {forecast?.list?.length > 0 && (
+        <>
+          <div className="flex flex-col md:flex-row items-center gap-2 mt-6 text-white">
+            <CloudSunIcon className="w-6 h-6 text-yellow-400" />
+            <h2 className="text-lg text-center md:text-xl font-semibold">
+              Pronóstico extendido para los próximos días
+            </h2>
+          </div>
+          <ForecastCarousel forecast={forecast} />
+        </>
       )}
     </div>
   );

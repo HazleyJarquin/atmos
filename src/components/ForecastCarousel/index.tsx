@@ -17,7 +17,10 @@ export const ForecastCarousel = ({ forecast }: Props) => {
     <Carousel className="w-full max-w-4xl mx-auto my-4">
       <CarouselContent className="-ml-1">
         {forecast.list.map((f, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+          <CarouselItem
+            key={index}
+            className="pl-1 basis-[85%] shrink-0 md:basis-1/2 lg:basis-1/3"
+          >
             <div className="p-1">
               <WeatherCard
                 variant="Forecast"
