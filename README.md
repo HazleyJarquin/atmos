@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌤️ Atmos
 
-## Getting Started
+**Atmos** es una aplicación web que permite buscar y visualizar el clima actual de cualquier ciudad del mundo utilizando la API de [OpenWeather](https://openweathermap.org/api). Fue desarrollada con **Next.js 15 (App Router)**, **TypeScript**, y componentes UI de **shadcn/ui**.
 
-First, run the development server:
+🔗 [Ver demo en vivo](https://atmos-haz.up.railway.app/)
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- ⚛️ [Next.js 15 (App Router)](https://nextjs.org/docs/app)
+- 💬 [OpenWeather API](https://openweathermap.org/current)
+- 💅 [shadcn/ui](https://ui.shadcn.com/)
+- 🧪 [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
+- 🧠 TypeScript
+- 🎨 Tailwind CSS
+
+---
+
+## 📦 Instalación
+
+```bash
+git clone https://github.com/HazleyJarquin/atmos
+cd atmos
+npm install
+```
+
+> Asegúrate de tener **Node.js v18+** y una cuenta en [OpenWeather](https://openweathermap.org/).
+
+### 🔐 Configuración del entorno
+
+Crea un archivo `.env.local` o `.env` en la raíz del proyecto con tu clave de API:
+
+```env
+OPEN_WEATHER_API_KEY=tu_api_key_aqui
+```
+
+---
+
+## 🧭 Cómo usar
+
+Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Luego visita: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📝 Escribí el nombre de una ciudad y obtené el clima actual (temperatura, estado del cielo, viento, etc.).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✅ Testing
 
-To learn more about Next.js, take a look at the following resources:
+Este proyecto incluye pruebas unitarias para los componentes principales:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `CitySearchForm` (formulario de búsqueda)
+- `WeatherCard` (tarjeta del clima)
+- Lógica de renderizado condicional (errores, estados)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Ejecutar tests:
 
-## Deploy on Vercel
+```bash
+npm run test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Ver cobertura:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run test:coverage
+```
+
+### Abrir reporte HTML de cobertura:
+
+```bash
+start coverage/lcov-report/index.html
+```
+
+> La aplicación cumple con un mínimo del **80% de cobertura** de código según los umbrales definidos en `jest.config.js`.
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── CitySearchForm/
+│   ├── WeatherCard/
+│   └── ui/            # Componentes de shadcn
+├── lib/
+├── utils/
+├── __tests__/         # Pruebas unitarias
+├── actions/           # Lógica del servidor (server actions)
+
+```
+
+---
+
+## 🧠 Lógica general
+
+- Al iniciar, se consulta el clima de una ciudad por defecto (`London`).
+- El usuario puede buscar otras ciudades y se muestra la información en tiempo real.
+- En caso de error (ciudad inválida), se muestra un mensaje adecuado.
+- Los íconos del clima son SVGs personalizados según el tipo de clima.
+
+---
+
+## 🚀 Producción
+
+Para generar el build de producción:
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## ✨ Créditos
+
+- API de datos climáticos por [OpenWeather](https://openweathermap.org/)
+- UI components por [shadcn/ui](https://ui.shadcn.com/)
+- Desarrollo por [Hazley Jarquin]
