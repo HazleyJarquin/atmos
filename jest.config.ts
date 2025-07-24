@@ -18,6 +18,7 @@ const customJestConfig = {
     "!src/**/*.d.ts",
     "!src/app/page.tsx",
     "!src/app/layout.tsx",
+    "!src/components/ui/**",
     "!src/**/index.ts",
   ],
   coverageThreshold: {

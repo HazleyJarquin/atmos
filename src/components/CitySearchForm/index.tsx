@@ -19,7 +19,7 @@ export const CitySearchForm = ({ initialCity }: Props) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center gap-2">
+    <div className="w-full flex flex-col items-center gap-2 sticky top-0 z-[999] bg-slate-950 p-4">
       <form
         onSubmit={handleSubmit}
         className="flex items-center gap-2 w-full max-w-md"
